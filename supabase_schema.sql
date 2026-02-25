@@ -4,9 +4,15 @@ CREATE TABLE IF NOT EXISTS public.users (
   email TEXT UNIQUE NOT NULL,
   password TEXT NOT NULL,
   name TEXT NOT NULL,
+  role TEXT DEFAULT 'user',
   balance NUMERIC DEFAULT 0,
+  tasks_completed INTEGER DEFAULT 0,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL
 );
+
+-- If you already created the users table, run these ALTER TABLE commands instead:
+-- ALTER TABLE public.users ADD COLUMN IF NOT EXISTS role TEXT DEFAULT 'user';
+-- ALTER TABLE public.users ADD COLUMN IF NOT EXISTS tasks_completed INTEGER DEFAULT 0;
 
 -- Create tasks table
 CREATE TABLE IF NOT EXISTS public.tasks (

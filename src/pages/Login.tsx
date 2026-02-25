@@ -57,13 +57,17 @@ export function Login({
         return;
       }
 
-      // In a real app, we would verify password here. For now, we just check if email exists.
+      if (userToLogin.password !== password) {
+        notify("Mật khẩu không chính xác.", "error");
+        return;
+      }
+
       setUser({
         email: userToLogin.email,
         name: userToLogin.name,
-        role: userToLogin.role,
-        balance: userToLogin.balance,
-        tasksCompleted: userToLogin.tasks_completed
+        role: userToLogin.role || 'user',
+        balance: userToLogin.balance || 0,
+        tasksCompleted: userToLogin.tasks_completed || 0
       });
       
       setTheme("light");

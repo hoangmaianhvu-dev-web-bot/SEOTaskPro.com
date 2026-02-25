@@ -92,6 +92,7 @@ export function Register({
     try {
       const newUser = {
         email,
+        password, // Add password here
         name,
         role: 'user' as const,
         balance: 0,

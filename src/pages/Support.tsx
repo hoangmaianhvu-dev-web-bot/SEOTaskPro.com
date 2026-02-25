@@ -77,7 +77,7 @@ export function Support() {
                     Địa chỉ
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
-                    123 Đường 9, Quận 2, TP.HCM
+                    
                   </div>
                 </div>
               </div>
@@ -90,7 +90,7 @@ export function Support() {
                     Số điện thoại
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
-                    1900 1234
+                    
                   </div>
                   <div className="text-xs text-gray-500 mt-1">
                     Miễn phí 24/7
@@ -106,7 +106,7 @@ export function Support() {
                     Email
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
-                    tamitfvn@gmail.com
+                   
                   </div>
                   <div className="text-xs text-gray-500 mt-1">
                     Phản hồi trong 24h

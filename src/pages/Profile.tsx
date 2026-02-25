@@ -18,7 +18,6 @@ import {
 } from "lucide-react";
 import { useNotification } from "../contexts/NotificationContext";
 import { useAppContext } from "../contexts/AppContext";
-import emailjs from 'emailjs-com';
 
 export function Profile({ onLogout }: { onLogout?: () => void }) {
   const { notify } = useNotification();
@@ -40,6 +39,9 @@ export function Profile({ onLogout }: { onLogout?: () => void }) {
   const [isVerifying, setIsVerifying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [timeLeft, setTimeLeft] = useState(0);
+
+  const [showProminent, setShowProminent] = useState(false);
+  const prominentTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -67,35 +69,18 @@ export function Profile({ onLogout }: { onLogout?: () => void }) {
     const code = Math.floor(100000 + Math.random() * 900000).toString();
     setGeneratedCode(code);
 
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    if (serviceId && templateId && publicKey) {
-      try {
-        await emailjs.send(
-          serviceId,
-          templateId,
-          {
-            to_email: profile.email,
-            to_name: profile.name,
-            verification_code: code,
-          },
-          publicKey
-        );
-        notify("Mã xác thực đã được gửi đến email của bạn", "success");
-        setIsVerificationSent(true);
-        setTimeLeft(60);
-      } catch (error) {
-        console.error("EmailJS Error:", error);
-        notify("Không thể gửi email. Vui lòng thử lại sau.", "error");
-      }
-    } else {
-      console.warn("EmailJS configuration missing");
-      notify("Hệ thống chưa được cấu hình gửi email. Vui lòng liên hệ admin.", "error");
-    }
-
-    setIsLoading(false);
+    // Simulate sending email and show it on screen
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsVerificationSent(true);
+      setTimeLeft(60);
+      
+      setShowProminent(true);
+      if (prominentTimerRef.current) clearTimeout(prominentTimerRef.current);
+      prominentTimerRef.current = setTimeout(() => setShowProminent(false), 20000);
+      
+      notify("Mã xác thực đã được tạo thành công", "success");
+    }, 1500);
   };
 
   const handleVerifyEmail = () => {
