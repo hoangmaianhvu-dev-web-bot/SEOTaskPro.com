@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-black antialiased transition-colors duration-200;
+  }
+  .dark body {
+    @apply bg-black text-white;
+  }
+}
+
+@layer utilities {
+  @keyframes shine {
+    0% {
+      background-position: 200% center;
+    }
+    100% {
+      background-position: -200% center;
+    }
+  }
+
+  .text-shine {
+    background: linear-gradient(
+      110deg,
+      currentColor 0%,
+      currentColor 40%,
+      #3b82f6 50%,
+      currentColor 60%,
+      currentColor 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine 3s linear infinite;
+  }
+}
