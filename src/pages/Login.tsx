@@ -29,7 +29,7 @@ export function Login({
     setIsLoading(true);
     
     try {
-      const isAdmin = email === 'usernthd2207@gmail.com' && password === 'admin2009';
+      const isAdmin = email === '2207@gmail.com' && password === 'admin2009';
       
       if (isAdmin) {
         setUser({

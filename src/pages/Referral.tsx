@@ -12,7 +12,7 @@ import { useNotification } from "../contexts/NotificationContext";
 export function Referral() {
   const { notify } = useNotification();
   const referralCode = "SEOTASK2024";
-  const referralLink = `https://seotask.vn/register?ref=${referralCode}`;
+  const referralLink = `https://seo-task-pro-com.vercel.app/register?ref=${referralCode}`;
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text);

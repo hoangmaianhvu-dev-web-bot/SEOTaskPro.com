@@ -21,8 +21,8 @@ import { useNotification } from "../contexts/NotificationContext";
 export function Support() {
   const { notify } = useNotification();
   const [formData, setFormData] = useState({
-    name: "NHẬP TÊN",
-    email: "NHẬP EMAIL",
+    name: "",
+    email: "",
     subject: "",
     content: "",
   });
@@ -77,7 +77,7 @@ export function Support() {
                     Địa chỉ
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
-                    
+                    36 THANH HÓA - VÙNG ĐẤT NEM CHUA
                   </div>
                 </div>
               </div>
@@ -90,7 +90,7 @@ export function Support() {
                     Số điện thoại
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
-                    
+                    113
                   </div>
                   <div className="text-xs text-gray-500 mt-1">
                     Miễn phí 24/7
@@ -122,10 +122,10 @@ export function Support() {
                     Giờ làm việc
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
-                    Thứ 2 - Thứ 7: 8:00 - 22:00
+                    Thứ 2 - Thứ 7: 12:00 - 00:00
                   </div>
                   <div className="text-xs text-gray-500 mt-1">
-                    Chủ nhật: 8:00 - 17:00
+                    Chủ nhật: 7:00 - 00:00
                   </div>
                 </div>
               </div>
@@ -175,7 +175,7 @@ export function Support() {
                   Thời gian phản hồi
                 </div>
                 <div className="text-xl font-bold text-gray-900 dark:text-white">
-                  &lt; 30 phút
+                  &lt; 30 phút - 12 giờ
                 </div>
               </div>
               <div className="bg-blue-50 dark:bg-black rounded-xl p-6 text-center border border-blue-100 dark:border-gray-800/50">

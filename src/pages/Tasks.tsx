@@ -19,33 +19,8 @@ export function Tasks({
   const { completeTask, tasks } = useAppContext();
   const [generatingTaskId, setGeneratingTaskId] = useState<string | null>(null);
 
-  const handleDoTask = async (taskId: string, targetUrl: string, reward: number, title: string) => {
-    setGeneratingTaskId(taskId);
-
-    // Open window immediately to avoid popup blockers
-    const newWindow = window.open("about:blank", "_blank");
-
-    if (!newWindow) {
-      notify(
-        "Trình duyệt của bạn đã chặn popup. Vui lòng cho phép mở popup.",
-        "error",
-      );
-      setGeneratingTaskId(null);
-      return;
-    }
-
-    newWindow.document.write("Đang tạo liên kết an toàn, vui lòng đợi...");
-
-    try {
-      newWindow.location.href = targetUrl;
-      completeTask(taskId, reward, title);
-      notify("Đã tạo liên kết và mở trang nhiệm vụ", "success");
-    } catch (error) {
-      newWindow.close();
-      notify("Không thể tạo liên kết. Vui lòng thử lại sau.", "error");
-    } finally {
-      setGeneratingTaskId(null);
-    }
+  const handleDoTask = (taskId: string) => {
+    navigateTo("task-detail", taskId);
   };
 
   return (
@@ -145,7 +120,7 @@ export function Tasks({
               </div>
 
               <button
-                onClick={() => handleDoTask(task.id, task.targetUrl, task.reward, task.title)}
+                onClick={() => handleDoTask(task.id)}
                 disabled={generatingTaskId === task.id}
                 className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-colors flex items-center justify-center gap-2 disabled:opacity-50 relative z-10 shadow-md shadow-blue-500/20"
               >
